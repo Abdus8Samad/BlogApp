@@ -1,0 +1,39 @@
+<%- include ('partials/header') %>
+    <div class="ui main text container">
+            <div class="ui huge header"><%= blog.data().title %></div>
+            <div class="ui top attached segment">
+                <div class="item">
+                    <img class="ui centered rounded image" src="<%= blog.data().image %>" alt="Not found">
+                </div>
+                <div class="content">
+                    <span>Posted On <%= blog.data().created %> at <%= blog.data().time %></span>
+                </div>
+                <div class="description">
+                    <p><%- blog.data().body %></p>
+                </div>
+                <div class="item">
+                    <div class="ui buttons">
+                        <button onclick="$('.overlay').fadeIn()" class="ui red button">Delete Post</button>
+                        <div class="or"></div>
+                        <a href="/blogs/<%= blog.id %>/edit" class="ui postive purple button">Edit Post</a>
+                      </div>
+                </div>
+            </div>
+    </div>
+    <script src="/popup.js"></script>
+    <div class="overlay">
+        <div class="ui warning message">
+            <i class="close icon" onclick="$('.overlay').fadeOut()"></i>
+            <div class="header">
+              Are you sure you want to delete post: <%= blog.data().title %>
+            </div><br>
+            <div class="ui buttons">
+                <button class="ui button positive"  onclick="$('.overlay').fadeOut()">Take me back!!</button>
+                <div class="or"></div>
+                <form action="/blogs/<%= blog.id %>?_method=DELETE" method="POST" style="display:inline-block;">
+                <input type="submit" class="ui negative button"  value="Delete Post" style="border-top-left-radius: 0;border-bottom-left-radius:0;">
+                </form>
+            </div>
+          </div>
+</div>
+<%- include ('partials/footer') %>

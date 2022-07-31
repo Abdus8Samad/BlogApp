@@ -1,0 +1,6 @@
+/* If the screen size is 800px wide or less */
+@media screen and (max-width: 500px){
+    .ui.warning.message{
+        left: 12% !important;
+    }
+}
